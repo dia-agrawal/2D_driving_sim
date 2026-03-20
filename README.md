@@ -12,50 +12,50 @@ Also incoperated SAC to have a learnable alpha parameter that doesn't allow alph
 ## How the enviornment works 
 <img width="787" height="517" alt="image" src="https://github.com/user-attachments/assets/ea1d491a-850b-4cc0-bb26-4ad1b56a3c58" />
 
-HOW THE ENVIORNMENT WORKS 
+### HOW THE ENVIORNMENT WORKS 
 Randomly generated buildings (Yellow Blocks) with some randomized grid like roads added in 
 Green is grass 
 Dark grey are roads 
 
-WHAT CERTAIN OBJECTS REPRESENT 
+### WHAT CERTAIN OBJECTS REPRESENT 
 Car looks like a triangle so we can see where its heading to 
 The orange dot is the initial waypoint. Once the car reaches this waypoint, next one will appear
 The X circuled is the final destination 
 
-REWARD 
+### REWARD 
 Time penalty of -0.001 each step (so learns to use most optimal path to target) 
-TURN PENALTY (in the beginning car was just spinning in circles) 
+#### TURN PENALTY (in the beginning car was just spinning in circles) 
 turn_penalty = -0.01 * abs(yaw_delta)
 reward += turn_penalty
-STAND STILL PENALTY 
+#### STAND STILL PENALTY 
 if self._agent_velocity < 0.5:
     reward += -0.02
-DENSE GUIDANCE SIGNAL 
+#### DENSE GUIDANCE SIGNAL 
 forward_reward = 1.0 * forward
 reward += forward_reward
-SPEED BONUS 
+#### SPEED BONUS 
 forward_reward = 1.0 * forward
 reward += forward_reward
-HEADING ALIGNMENT  
+#### HEADING ALIGNMENT  
 align_reward = k_align * (abs(head_err_prev) - abs(head_err_new))
 reward += align_reward
-ENVIORNMENT REWARD 
-For buildings: 
+#### ENVIORNMENT REWARD 
+##### For buildings: 
 reward += -10.0
 terminated = True
-For Grass: 
+##### For Grass: 
 reward += -0.05
-For Road
+##### For Road
 reward += 0.00
-WAYPOINT REWARD 
+#### WAYPOINT REWARD 
 reward += wp_reward      # 0.5
 wp_idx += 1
-FINAL WAYPOINT REWARD 
+#### FINAL WAYPOINT REWARD 
 if not _final_wp_paid:
     reward += wp_reward      # 0.5
     reward += wp_final_bonus # 5.0
     _final_wp_paid = True
-GOAL REWARD 
+#### GOAL REWARD 
 reward += 50.0
 terminated = True
 
