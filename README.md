@@ -4,7 +4,10 @@
 Coded SAC from scratch using a older youtube tutorial 
 https://github.com/dia-agrawal/sac
 
-https://www.youtube.com/watch?v=ioidsRlf79o
+Reference: https://www.youtube.com/watch?v=ioidsRlf79o
+
+Understood A_star Alogrithm from previous work: 
+https://github.com/dia-agrawal/A_STAR
 
 Updated gymnasium to work with current GPU (4070 Ti) because old github could only work on CPU. Older SAC used Value Network which isn't really implemented in modern SAC programs. 
 Also incoperated SAC to have a learnable alpha parameter that doesn't allow alpha to get closer to 0 (So algorithm doesn't become determinstic and influence exploration to some extent at all times) 
