@@ -24,7 +24,7 @@ The X circuled is the final destination
 
 ### REWARD 
 Time penalty of -0.001 each step (so learns to use most optimal path to target) 
-#### **TURN PENALTY ** (in the beginning car was just spinning in circles) _ 
+#### TURN PENALTY (in the beginning car was just spinning in circles) 
 turn_penalty = -0.01 * abs(yaw_delta)
 reward += turn_penalty
 #### STAND STILL PENALTY 
